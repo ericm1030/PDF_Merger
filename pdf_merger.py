@@ -4,6 +4,9 @@ import PySimpleGUI as sg
 from pdfrw import PdfReader, PdfWriter, IndirectPdfDict
 import re
 import traceback
+import os
+import webbrowser
+
 
 # from PIL import Image
 # from io import BytesIO
@@ -118,6 +121,13 @@ def merge_pdfs(pdfs, output_file_name):
         Creator='none',
     )
     writer.write(output_file_name)
+
+    # Open the file
+    url = 'file://' + output_file_name
+    webbrowser.open(url, new=2)
+
+    print("File Opened")
+
 
     return None
 
